@@ -60,7 +60,7 @@ public class W2 {
     @Setter @Getter private	String localityNameSecondary;
     @Setter @Getter private	String box12aCode;
     @Setter @Getter private	String box12dCode;
-    @Setter @Getter private	String statutaryEmployee;
+    @Setter @Getter private	String statutoryEmployee;
 
     @Override
     public String toString() {
@@ -89,7 +89,7 @@ public class W2 {
                 + "\nstateIncomeTaxSecondary: " + stateIncomeTaxSecondary + "\nlocalWagesTipsSecondary: "
                 + localWagesTipsSecondary + "\nlocalIncomeTaxSecondary: " + localIncomeTaxSecondary
                 + "\nlocalityNameSecondary: " + localityNameSecondary + "\nbox12aCode: " + box12aCode + "\nbox12dCode: "
-                + box12dCode + "\nstatutaryEmployee: " + statutaryEmployee + "\n";
+                + box12dCode + "\nstatutoryEmployee: " + statutoryEmployee + "\n";
     }
 }
 
