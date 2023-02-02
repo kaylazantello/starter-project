@@ -34,31 +34,28 @@ public class StarterProjectApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		// fetch an individual customer
-		System.out.println("W-2 found with findBySocialSecurityNumber(\"130217924\"):");
-		System.out.println("--------------------------------");
-		//W2 w2 = w2repository.findBySocialSecurityNumber("130217924");
-		//BasicEmployeeInfo w2 = w2repository.findBySocialSecurityNumber("130217924");
-		//System.out.println(w2);
 
-		System.out.println("W-2 found with findByIsLocalTimeSystem(\"false\"):");
+		System.out.println("W-2 found with findByRunDate(\"2022-10-06\"):");
 		System.out.println("--------------------------------");
-		//W2 w2 = w2repository.findBySocialSecurityNumber("130217924");
 		ReportRunInfo w2info = w2repository.findByRunDate("2022-10-06");
 		System.out.println(w2info);
 		System.out.println(w2info.getRunDate());
 
-		System.out.println("Customers found with findAll():");
-		System.out.println("-------------------------------");
-		for (W2 customer : w2repository.findAll()) {
-			System.out.println(customer);
-		}
-		System.out.println();
-		//System.out.println(w2repository.findByEmployeeSocialSecurityNumber("480-47-6564"));
+		System.out.println("W-2 found with findBySocialSecurityNumber(\"130217924\"):");
+		System.out.println("--------------------------------");
+		W2 w2 = w2repository.findBySocialSecurityNumber("130217924");
+		System.out.println(w2);
 
-		//System.out.println("W-2 found with findByID(\"63718afd85264a9df817bf9b\"):");
-		//System.out.println("--------------------------------");
-		//System.out.println(w2repository.findById("63718afd85264a9df817bfaa"));
+		/*System.out.println("W2s found with findAll():");
+		System.out.println("-------------------------------");
+		for (W2 w2 : w2repository.findAll()) {
+			System.out.println(w2);
+		}
+		System.out.println();*/
+
+		System.out.println("W-2 found with findByID(\"63d831d093e6ebbc1f938c77\"):");
+		System.out.println("--------------------------------");
+		System.out.println(w2repository.findById("63d831d093e6ebbc1f938c77"));
 
 		/*try {
 			File myObj = new File("63718afd85264a9df817bf9b.ofx");
@@ -102,12 +99,6 @@ public class StarterProjectApplication implements CommandLineRunner {
 			e.printStackTrace();
 		}*/
 
-
-		/*System.out.println("W-2s found with findByEmployerAddressState(\"AZ\"):");
-		System.out.println("--------------------------------");
-		for (W2 w2 : w2repository.findByEmployerAddressState("AZ")) {
-			System.out.println(w2);
-		}*/
 	}
 }
 

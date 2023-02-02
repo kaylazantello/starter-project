@@ -1,5 +1,5 @@
 package com.w2retrieval.starterproject.model;
-import java.util.ArrayList;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,5 +11,5 @@ import lombok.ToString;
 @Getter
 @ToString
 public class Employees {
-    private ArrayList<Employee> employee;
+    private List<Employee> employee;
 }

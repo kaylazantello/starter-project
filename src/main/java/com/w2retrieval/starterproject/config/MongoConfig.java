@@ -28,10 +28,10 @@ public class MongoConfig {
     }
 
     @ReadingConverter
-    public class ListToEEFormDataConverter implements Converter<ArrayList<EETaxData>, EEFormData> {
+    public class ListToEEFormDataConverter implements Converter<List<EETaxData>, EEFormData> {
 
         @Override
-        public EEFormData convert(ArrayList<EETaxData> source) {
+        public EEFormData convert(List<EETaxData> source) {
             return new EEFormData(source);
         }
     }

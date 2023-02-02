@@ -7,13 +7,14 @@ import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document("paychexmocktest2")
+@Document("paychexmocktest3")
 @Setter
 @Getter
 @ToString
 @AllArgsConstructor
 public class W2 {
     @Id
+    private String id;
     private String _class;
     private Header header;
     private Report report;

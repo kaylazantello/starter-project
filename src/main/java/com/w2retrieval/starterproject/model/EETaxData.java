@@ -1,5 +1,5 @@
 package com.w2retrieval.starterproject.model;
-import java.util.ArrayList;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,7 +12,7 @@ import lombok.ToString;
 @ToString
 public class EETaxData {
     private String allocatedTips;
-    private ArrayList<Box14> box14;
+    private List<Box14> box14;
     private String dependentCareBenefits;
     private String federalIncomeTaxWithheld;
     private String medicareTaxWithheld;
@@ -23,7 +23,7 @@ public class EETaxData {
     private String socialSecurityTaxWithheld;
     private String socialSecurityTips;
     private String socialSecurityWages;
-    private ArrayList<StateInformation> stateInformation;
+    private List<StateInformation> stateInformation;
     private String statutoryIndicator;
     private String thirdPartySickIndicator;
     private String w2PrintIndicator;
