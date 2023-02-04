@@ -1,4 +1,3 @@
-/*
 package com.w2retrieval.starterproject.config;
 
 import java.util.ArrayList;
@@ -17,25 +16,79 @@ import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import com.w2retrieval.starterproject.model.EEFormData;
 
+import com.w2retrieval.starterproject.converter.EEFormDataConverter;
+import com.mongodb.ConnectionString;
+import com.mongodb.MongoClientSettings;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+
 @Configuration
+//@EnableMongoRepositories(basePackages = "com.baeldung.repository")
+//public class MongoConfig extends AbstractMongoClientConfiguration {
 public class MongoConfig {
     @Bean
     public MongoCustomConversions customConversions()
     {
         List<Converter<?, ?>> converterList = new ArrayList<Converter<?, ?>>();
-        converterList.add(new MyCustomWriterConverter());
-        return new CustomConversions(converterList);
+        converterList.add(new EEFormDataConverter());
+        return new MongoCustomConversions(converterList);
     }
 
-    @ReadingConverter
-    public class ListToEEFormDataConverter implements Converter<List<EETaxData>, EEFormData> {
-
-        @Override
-        public EEFormData convert(List<EETaxData> source) {
-            return new EEFormData(source);
-        }
-    }
 }
 
 
+
+
+/*
+@Configuration
+@EnableMongoRepositories(basePackages = "com.baeldung.repository")
+public class MongoConfig extends AbstractMongoClientConfiguration {
+
+    private final List<Converter<?, ?>> converters = new ArrayList<Converter<?, ?>>();
+
+    @Override
+    protected String getDatabaseName() {
+        return "test";
+    }
+
+    @Override
+    public MongoClient mongoClient() {
+        final ConnectionString connectionString = new ConnectionString("mongodb://localhost:27017/test");
+        final MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
+                .applyConnectionString(connectionString)
+                .build();
+        return MongoClients.create(mongoClientSettings);
+    }
+
+    @Override
+    public Collection<String> getMappingBasePackages() {
+        return Collections.singleton("com.baeldung");
+    }
+
+    @Bean
+    public UserCascadeSaveMongoEventListener userCascadingMongoEventListener() {
+        return new UserCascadeSaveMongoEventListener();
+    }
+
+    @Bean
+    public CascadeSaveMongoEventListener cascadingMongoEventListener() {
+        return new CascadeSaveMongoEventListener();
+    }
+
+    @Override
+    public MongoCustomConversions customConversions() {
+        converters.add(new UserWriterConverter());
+        return new MongoCustomConversions(converters);
+    }
+
+    @Bean
+    MongoTransactionManager transactionManager(MongoDatabaseFactory dbFactory) {
+        return new MongoTransactionManager(dbFactory);
+    }
+
+    @Override
+    protected boolean autoIndexCreation() {
+        return true;
+    }
+}
 */

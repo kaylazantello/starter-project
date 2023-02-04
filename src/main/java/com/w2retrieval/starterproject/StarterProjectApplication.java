@@ -18,7 +18,6 @@ import java.io.IOException;  // Import the IOException class to handle errors
 import java.io.FileWriter;   // Import the FileWriter class
 
 @SpringBootApplication
-@EnableMongoRepositories
 public class StarterProjectApplication implements CommandLineRunner {
 
 	private W2Repository w2repository;
