@@ -10,12 +10,12 @@ import lombok.ToString;
 @Getter
 @ToString
 public class PreparerInformation {
-    private String officerName;
-    private String officerTitle;
-    private PhoneNumber phoneNumber;
-    private String preparerEin;
-    private String preparerName;
-    private String preparerProduct;
-    private ReferenceCopyText referenceCopyText;
-    private String signaturePath;
+    protected String officerName;
+    protected String officerTitle;
+    protected PhoneNumber phoneNumber;
+    protected String preparerEin;
+    protected String preparerName;
+    protected String preparerProduct;
+    protected ReferenceCopyText referenceCopyText;
+    protected String signaturePath;
 }

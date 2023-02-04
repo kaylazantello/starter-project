@@ -10,11 +10,11 @@ import lombok.ToString;
 @Getter
 @ToString
 public class BasicEmployeeInfo {
-    private String deptNbr;
-    private EmployeeAddressInformation employeeAddressInformation;
-    private String employeeId;
-    private EmployeeName employeeName;
-    private String internalEmployeeNumber;
-    private TaxIdInfo taxIdInfo;
-    private String workerPk;
+    protected String deptNbr;
+    protected EmployeeAddressInformation employeeAddressInformation;
+    protected String employeeId;
+    protected EmployeeName employeeName;
+    protected String internalEmployeeNumber;
+    protected TaxIdInfo taxIdInfo;
+    protected String workerPk;
 }

@@ -11,9 +11,9 @@ import lombok.ToString;
 @Getter
 @ToString
 public class StateInformation {
-    private List<LocalInformation> localInformation;
-    private String stateAbbreviation;
-    private String stateIdNumber;
-    private String stateIncomeTax;
-    private String stateWagesTips;
+    protected List<LocalInformation> localInformation;
+    protected String stateAbbreviation;
+    protected String stateIdNumber;
+    protected String stateIncomeTax;
+    protected String stateWagesTips;
 }

@@ -9,7 +9,6 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-public class PhoneNumber {
-    protected String areaCode;
-    protected String number;
+public class TaxIdInfoClientInfo {
+    protected String einNumber;
 }

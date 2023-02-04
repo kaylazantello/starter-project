@@ -10,5 +10,5 @@ import lombok.ToString;
 @Getter
 @ToString
 public class Companies {
-    private Company company;
+    protected Company company;
 }

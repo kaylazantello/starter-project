@@ -10,8 +10,8 @@ import lombok.ToString;
 @Getter
 @ToString
 public class EmployeeName {
-    private String firstName;
-    private String fullName;
-    private String lastName;
-    private String middleInitial;
+    protected String firstName;
+    protected String fullName;
+    protected String lastName;
+    protected String middleInitial;
 }

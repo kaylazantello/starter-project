@@ -10,6 +10,6 @@ import lombok.ToString;
 @Getter
 @ToString
 public class Employee {
-    private BasicEmployeeInfo basicEmployeeInfo;
-    private EEFormData eeFormData;
+    protected BasicEmployeeInfo basicEmployeeInfo;
+    protected EEFormData eeFormData;
 }

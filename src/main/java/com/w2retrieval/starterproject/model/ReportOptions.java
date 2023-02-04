@@ -10,5 +10,5 @@ import lombok.ToString;
 @Getter
 @ToString
 public class ReportOptions {
-    private FieldMaskingOptions fieldMaskingOptions;
+    protected FieldMaskingOptions fieldMaskingOptions;
 }

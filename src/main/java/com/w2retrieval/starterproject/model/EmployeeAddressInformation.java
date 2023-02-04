@@ -10,6 +10,6 @@ import lombok.ToString;
 @Getter
 @ToString
 public class EmployeeAddressInformation {
-    private String address1;
-    private String address2;
+    protected String address1;
+    protected String address2;
 }

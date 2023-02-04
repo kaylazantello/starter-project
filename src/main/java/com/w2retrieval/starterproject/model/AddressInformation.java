@@ -10,12 +10,12 @@ import lombok.ToString;
 @Getter
 @ToString
 public class AddressInformation {
-    private String country;
-    private String countryCode;
-    private String extended;
-    private String foreignAddressIndicator;
-    private String locality;
-    private String postalCode;
-    private String region;
-    private String street;
+    protected String country;
+    protected String countryCode;
+    protected String extended;
+    protected String foreignAddressIndicator;
+    protected String locality;
+    protected String postalCode;
+    protected String region;
+    protected String street;
 }

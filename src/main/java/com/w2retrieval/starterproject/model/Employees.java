@@ -11,5 +11,5 @@ import lombok.ToString;
 @Getter
 @ToString
 public class Employees {
-    private List<Employee> employee;
+    protected List<Employee> employee;
 }

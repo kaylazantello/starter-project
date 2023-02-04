@@ -10,9 +10,9 @@ import lombok.ToString;
 @Getter
 @ToString
 public class Company {
-    private ClientInformation clientInformation;
-    private Dates dates;
-    private Employees employees;
-    private Indicators indicators;
-    private PrintFlags printFlags;
+    protected ClientInformation clientInformation;
+    protected Dates dates;
+    protected Employees employees;
+    protected Indicators indicators;
+    protected PrintFlags printFlags;
 }

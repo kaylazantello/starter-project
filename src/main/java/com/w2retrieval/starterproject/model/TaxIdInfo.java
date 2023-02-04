@@ -10,5 +10,5 @@ import lombok.ToString;
 @Getter
 @ToString
 public class TaxIdInfo {
-    private String socialSecurityNumber;
+    protected String socialSecurityNumber;
 }

@@ -10,9 +10,9 @@ import lombok.ToString;
 @Getter
 @ToString
 public class PrintFlags {
-    private String printAgency;
-    private String printAtVendor;
-    private String printClient;
-    private String printORS;
-    private String suppressCoverTrailerPages;
+    protected String printAgency;
+    protected String printAtVendor;
+    protected String printClient;
+    protected String printORS;
+    protected String suppressCoverTrailerPages;
 }

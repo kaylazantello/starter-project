@@ -10,6 +10,6 @@ import lombok.ToString;
 @Getter
 @ToString
 public class ReportInfo {
-    //private String _id;
-    private String fileId;
+    protected String _id;
+    protected String fileId;
 }

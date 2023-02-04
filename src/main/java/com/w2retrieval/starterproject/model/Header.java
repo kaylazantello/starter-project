@@ -10,8 +10,8 @@ import lombok.ToString;
 @Getter
 @ToString
 public class Header {
-    private String isLocalSystem;
-    private String isTestSystem;
-    private ReportInfo reportInfo;
-    private ReportRunInfo reportRunInfo;
+    protected String isLocalSystem;
+    protected String isTestSystem;
+    protected ReportInfo reportInfo;
+    protected ReportRunInfo reportRunInfo;
 }

@@ -10,5 +10,5 @@ import lombok.ToString;
 @Getter
 @ToString
 public class FieldMaskingOptions {
-    private String maskSocialSecurityNumbers;;
+    protected String maskSocialSecurityNumbers;;
 }

@@ -11,21 +11,21 @@ import lombok.ToString;
 @Getter
 @ToString
 public class EETaxData {
-    private String allocatedTips;
-    private List<Box14> box14;
-    private String dependentCareBenefits;
-    private String federalIncomeTaxWithheld;
-    private String medicareTaxWithheld;
-    private String medicareWagesAndTips;
-    private String msg;
-    private String nonQualifiedPlans;
-    private String retirementIndicator;
-    private String socialSecurityTaxWithheld;
-    private String socialSecurityTips;
-    private String socialSecurityWages;
-    private List<StateInformation> stateInformation;
-    private String statutoryIndicator;
-    private String thirdPartySickIndicator;
-    private String w2PrintIndicator;
-    private String wagesTipsOtherCompensation;
+    protected String allocatedTips;
+    protected List<Box14> box14;
+    protected String dependentCareBenefits;
+    protected String federalIncomeTaxWithheld;
+    protected String medicareTaxWithheld;
+    protected String medicareWagesAndTips;
+    protected String msg;
+    protected String nonQualifiedPlans;
+    protected String retirementIndicator;
+    protected String socialSecurityTaxWithheld;
+    protected String socialSecurityTips;
+    protected String socialSecurityWages;
+    protected List<StateInformation> stateInformation;
+    protected String statutoryIndicator;
+    protected String thirdPartySickIndicator;
+    protected String w2PrintIndicator;
+    protected String wagesTipsOtherCompensation;
 }

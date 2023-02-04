@@ -12,5 +12,5 @@ import lombok.ToString;
 @Getter
 @ToString
 public class ReferenceCopyText {
-    private List<String> val;
+    protected List<String> val;
 }

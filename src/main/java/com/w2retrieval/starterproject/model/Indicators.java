@@ -10,7 +10,7 @@ import lombok.ToString;
 @Getter
 @ToString
 public class Indicators {
-    private String employeeW2;
-    private String employerW2;
-    private String formDataSortInfo;
+    protected String employeeW2;
+    protected String employerW2;
+    protected String formDataSortInfo;
 }

@@ -10,6 +10,6 @@ import lombok.ToString;
 @Getter
 @ToString
 public class Box14 {
-    private String boxAmount;
-    private String boxText;
+    protected String boxAmount;
+    protected String boxText;
 }

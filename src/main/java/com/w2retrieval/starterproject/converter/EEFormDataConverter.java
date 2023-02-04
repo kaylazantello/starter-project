@@ -8,6 +8,7 @@ import org.springframework.data.convert.ReadingConverter;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -15,7 +16,6 @@ import java.util.List;
 public class EEFormDataConverter implements Converter<List<EETaxData>, EEFormData> {
     @Override
     public EEFormData convert(List<EETaxData> source) {
-        System.out.println("Reading Converter called");
         return new EEFormData(source);
     }
 }

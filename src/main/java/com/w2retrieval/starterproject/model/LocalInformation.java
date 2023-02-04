@@ -10,9 +10,9 @@ import lombok.ToString;
 @Getter
 @ToString
 public class LocalInformation {
-    private String localIncomeTax;
-    private String localName;
-    private String localWageTips;
-    private String pennsylvaniaLiveSchoolDistrictCode;
-    private String pennsylvaniaSchoolDistrictCode;
+    protected String localIncomeTax;
+    protected String localName;
+    protected String localWageTips;
+    protected String pennsylvaniaLiveSchoolDistrictCode;
+    protected String pennsylvaniaSchoolDistrictCode;
 }

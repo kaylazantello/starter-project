@@ -10,6 +10,6 @@ import lombok.ToString;
 @Getter
 @ToString
 public class ReportRunInfo {
-    private String runDate;
-    private String runTime;
+    protected String runDate;
+    protected String runTime;
 }

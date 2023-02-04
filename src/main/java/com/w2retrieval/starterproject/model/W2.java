@@ -7,17 +7,21 @@ import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document("paychexmocktest4")
+@Document("paychexmock1")
 @Setter
 @Getter
 @ToString
 @AllArgsConstructor
 public class W2 {
     @Id
-    private String id;
-    //private String _class;
-    private Header header;
-    private Report report;
-    private ReportOptions reportOptions;
+    protected String id;
+    protected String _class;
+    protected Header header;
+    protected Report report;
+    protected ReportOptions reportOptions;
+    
+    public String getSSN() {
+        return report.companies.company.employees.employee.get(0).basicEmployeeInfo.taxIdInfo.getSocialSecurityNumber();
+    }
 }
 
