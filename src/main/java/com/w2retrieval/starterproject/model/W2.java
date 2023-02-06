@@ -23,5 +23,17 @@ public class W2 {
     public String getSSN() {
         return report.companies.company.employees.employee.get(0).basicEmployeeInfo.taxIdInfo.getSocialSecurityNumber();
     }
+//    public String getWages() {
+//        return report.companies.company.employees.employee.get(0).eeFormData.eeTaxData.get(0).stateInformation.get(0).localInformation.get(0).getLocalIncomeTax();
+//        //eeFormData.eeTaxData
+//        // stateInformation.get(0).localInformation.localWageTips()
+//    }
+//    public String getFedTaxWh() {
+//        return report.companies.company.employees.employee.get(0).eeFormData.eeTaxData.get(0).getFederalIncomeTaxWithheld();
+//    }
+//
+//    public String getSSWages(){
+//        return report.companies.company.employees.employee.get(0).eeFormData.eeTaxData.get(0).getSocialSecurityWages();
+//    }
 }
 

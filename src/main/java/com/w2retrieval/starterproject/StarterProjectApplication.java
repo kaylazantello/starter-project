@@ -63,25 +63,81 @@ public class StarterProjectApplication implements CommandLineRunner {
 
 		try {
 			FileWriter ofxFile = new FileWriter(w2_id + ".ofx");
-			ofxFile.write("<TAXW2RS>\n");
-			ofxFile.write("<TAXW2_V200>\n");
+			//OFX Headers
+			ofxFile.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n" + "<?OFX OFXHEADER=\"200\" VERSION=\"202\" SECURITY=\"NONE\" OLDFILEUID=\"NONE\" NEWFILEUID=\"NONE\"?>");
+			ofxFile.write("<OFX>\n" +
+					"    <SIGNONMSGSRSV1>\n" +
+					"        <SONRS>\n" +
+					"            <STATUS>\n" +
+					"                <CODE>0</CODE>\n" +
+					"                <SEVERITY>INFO</SEVERITY>\n" +
+					"                <MESSAGE>Successful Login</MESSAGE>\n" +
+					"            </STATUS>\n" +
+					"            <DTSERVER>39210131000000</DTSERVER>\n" +
+					"            <LANGUAGE>ENG</LANGUAGE>\n" +
+					"            <FI>\n" +
+					"                <ORG>fiName</ORG>\n" +
+					"                <FID>fiId</FID>\n" +
+					"            </FI>\n" +
+					"        </SONRS>\n" +
+					"    </SIGNONMSGSRSV1>\n" +
+					"    <TAXW2MSGSRSV1>\n" +
+					"        <TAXW2TRNRS>\n" +
+					"            <TRNUID>_GUID_</TRNUID>\n" +
+					"            <STATUS>\n" +
+					"                <CODE>0</CODE>\n" +
+					"                <SEVERITY>INFO</SEVERITY>\n" +
+					"                <MESSAGE>SUCCESS</MESSAGE>\n" +
+					"            </STATUS>");
+			ofxFile.write("\t\t\t<TAXW2RS>\n");
+			//ofxFile.write("<SSN>" + w2.getSSN() + "</SSN>\n");
+			ofxFile.write("\t\t\t\t<TAXW2_V200>\n");
+			//ofxFile.write("\t<TAXYEAR>2023</TAXYEAR>\n");
+			// 3.2.9 EMPLOYER
+			ofxFile.write("\t\t\t\t<EMPLOYER>\n");
+			ofxFile.write("\t\t\t\t\t<FEDIDNUMBER>" + w2.getReport().getCompanies().getCompany().getClientInformation().getTaxIdInfoClientInfo().getEinNumber() + "</FEDIDNUMBER>\n");
+			ofxFile.write("\t\t\t\t\t<NAME1>" + w2.getReport().getCompanies().getCompany().getClientInformation().getCompanyName() + "</NAME1>\n");
+			ofxFile.write("\t\t\t\t\t<ADDR1>" + w2.getReport().getCompanies().getCompany().getClientInformation().getAddressInformation().getStreet() + "</ADDR1>\n");
+			ofxFile.write("\t\t\t\t\t<CITY>" + w2.getReport().getCompanies().getCompany().getClientInformation().getAddressInformation().getLocality() + "</CITY>\n");
+			ofxFile.write("\t\t\t\t\t<STATE>" + w2.getReport().getCompanies().getCompany().getClientInformation().getAddressInformation().getRegion() + "</STATE>\n");
+			ofxFile.write("\t\t\t\t\t<POSTALCODE>" + w2.getReport().getCompanies().getCompany().getClientInformation().getAddressInformation().getPostalCode() + "</POSTALCODE>\n");
+			ofxFile.write("\t\t\t\t</EMPLOYER>\n");
+			// 3.2.10 EMPLOYEE
+			ofxFile.write("\t\t\t\t<EMPLOYEE>\n");
+			ofxFile.write("\t\t\t\t<SSN>" + w2.getSSN() + "</SSN>\n");
+			ofxFile.write("\t\t\t\t</EMPLOYEE>\n");
+			ofxFile.write("\t\t\t\t<ORIGINALW2>");
 			ofxFile.write("\t<TAXYEAR>2023</TAXYEAR>\n");
 			// 3.2.9 EMPLOYER
-			ofxFile.write("\t<EMPLOYER>\n");
-			ofxFile.write("\t\t<FEDIDNUMBER>" + w2.getReport().getCompanies().getCompany().getClientInformation().getTaxIdInfoClientInfo().getEinNumber() + "</FEDIDNUMBER>\n");
-			ofxFile.write("\t\t<NAME1>" + w2.getReport().getCompanies().getCompany().getClientInformation().getCompanyName() + "</NAME1>\n");
-			ofxFile.write("\t\t<ADDR1>" + w2.getReport().getCompanies().getCompany().getClientInformation().getAddressInformation().getStreet() + "</ADDR1>\n");
-			ofxFile.write("\t\t<CITY>" + w2.getReport().getCompanies().getCompany().getClientInformation().getAddressInformation().getLocality() + "</CITY>\n");
-			ofxFile.write("\t\t<STATE>" + w2.getReport().getCompanies().getCompany().getClientInformation().getAddressInformation().getRegion() + "</STATE>\n");
-			ofxFile.write("\t\t<POSTALCODE>" + w2.getReport().getCompanies().getCompany().getClientInformation().getAddressInformation().getPostalCode() + "</POSTALCODE>\n");
-			ofxFile.write("\t</EMPLOYER>\n");
+			ofxFile.write("\t\t\t\t<EMPLOYER>\n");
+			ofxFile.write("\t\t\t\t\t<FEDIDNUMBER>" + w2.getReport().getCompanies().getCompany().getClientInformation().getTaxIdInfoClientInfo().getEinNumber() + "</FEDIDNUMBER>\n");
+			ofxFile.write("\t\t\t\t\t<NAME1>" + w2.getReport().getCompanies().getCompany().getClientInformation().getCompanyName() + "</NAME1>\n");
+			ofxFile.write("\t\t\t\t\t<ADDR1>" + w2.getReport().getCompanies().getCompany().getClientInformation().getAddressInformation().getStreet() + "</ADDR1>\n");
+			ofxFile.write("\t\t\t\t\t<CITY>" + w2.getReport().getCompanies().getCompany().getClientInformation().getAddressInformation().getLocality() + "</CITY>\n");
+			ofxFile.write("\t\t\t\t\t<STATE>" + w2.getReport().getCompanies().getCompany().getClientInformation().getAddressInformation().getRegion() + "</STATE>\n");
+			ofxFile.write("\t\t\t\t\t<POSTALCODE>" + w2.getReport().getCompanies().getCompany().getClientInformation().getAddressInformation().getPostalCode() + "</POSTALCODE>\n");
+			ofxFile.write("\t\t\t\t</EMPLOYER>\n");
 			// 3.2.10 EMPLOYEE
-			ofxFile.write("\t<EMPLOYEE>\n");
-			ofxFile.write("\t<SSN>" + w2.getSSN() + "</SSN>\n");
-			ofxFile.write("\t</EMPLOYEE>\n");
+			ofxFile.write("\t\t\t\t<EMPLOYEE>\n");
+			ofxFile.write("\t\t\t\t<SSN>" + w2.getSSN() + "</SSN>\n");
+			ofxFile.write("\t\t\t\t</EMPLOYEE>\n");
+			//3.2.7
+//			ofxFile.write("\t\t\t\t<WAGES>" + w2.getWages() + "<WAGES/>\n");
+//			ofxFile.write("\t\t\t\t<FEDTAXWH>" + w2.getFedTaxWh() + "</FEDTAXWH>\n");
+//			ofxFile.write("\t\t\t\t<SSWAGES>" + w2.getSSWages() + "</SSWAGES>\n");
+//			ofxFile.write("\t\t\t\t<SSTAXWH>" + w2.getSSTaxWH() + "</SSTAXWH>\n");
+//			ofxFile.write("\t\t\t\t<MEDICAREWAGES>" + w2.getMedCareWages() + "</MEDICAREWAGES>\n");
+//          ofxFile.write("\t\t\t\t<MEDICARETAXWH>" + w2.getMedCareTaxWH() + "</MEDICARETAXWH>\n"
+//          ofxFile.write("\t\t\t\t<SSTIPS>" + w2.getSSTips() + "</SSTIPS>\n");
+            ofxFile.write("\t\t\t\t<ALLOCATEDTIPS>nu</ALLOCATEDTIPS>\n");
+            ofxFile.write("\t\t\t\t<DEPCAREBENEFIT>nu</DEPCAREBENEFIT>\n");
+            ofxFile.write( "\t\t\t\t<NONQUALPLAN>nu</NONQUALPLAN>\n");
 
-			ofxFile.write("</TAXW2_V200>\n");
-			ofxFile.write("</TAXW2RS>\n");
+			ofxFile.write("\t\t\t\t</TAXW2_V200>\n");
+			ofxFile.write("\t\t\t</TAXW2RS>\n");
+			ofxFile.write("\t\t</TAXW2TRNRS>\n");
+			ofxFile.write("\t</TAXW2MSGSRSV1>\n");
+			ofxFile.write("</OFX>");
 			ofxFile.close();
 			System.out.println("Successfully wrote to the file.");
 		} catch (IOException e) {
