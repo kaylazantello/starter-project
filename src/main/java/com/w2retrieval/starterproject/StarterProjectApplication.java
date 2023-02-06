@@ -88,11 +88,11 @@ public class StarterProjectApplication implements CommandLineRunner {
 					"                <CODE>0</CODE>\n" +
 					"                <SEVERITY>INFO</SEVERITY>\n" +
 					"                <MESSAGE>SUCCESS</MESSAGE>\n" +
-					"            </STATUS>");
+					"            </STATUS>\n");
 			ofxFile.write("\t\t\t<TAXW2RS>\n");
-			//ofxFile.write("<SSN>" + w2.getSSN() + "</SSN>\n");
 			ofxFile.write("\t\t\t\t<TAXW2_V200>\n");
-			//ofxFile.write("\t<TAXYEAR>2023</TAXYEAR>\n");
+			ofxFile.write("\t\t\t\t<TAXYEAR>2023</TAXYEAR>\n");
+			ofxFile.write("\t\t\t\t<CNTRLNO>012547 WY/OA7</CNTRLNO>\n");
 			// 3.2.9 EMPLOYER
 			ofxFile.write("\t\t\t\t<EMPLOYER>\n");
 			ofxFile.write("\t\t\t\t\t<FEDIDNUMBER>" + w2.getReport().getCompanies().getCompany().getClientInformation().getTaxIdInfoClientInfo().getEinNumber() + "</FEDIDNUMBER>\n");
@@ -104,22 +104,14 @@ public class StarterProjectApplication implements CommandLineRunner {
 			ofxFile.write("\t\t\t\t</EMPLOYER>\n");
 			// 3.2.10 EMPLOYEE
 			ofxFile.write("\t\t\t\t<EMPLOYEE>\n");
-			ofxFile.write("\t\t\t\t<SSN>" + w2.getSSN() + "</SSN>\n");
-			ofxFile.write("\t\t\t\t</EMPLOYEE>\n");
-			ofxFile.write("\t\t\t\t<ORIGINALW2>");
-			ofxFile.write("\t<TAXYEAR>2023</TAXYEAR>\n");
-			// 3.2.9 EMPLOYER
-			ofxFile.write("\t\t\t\t<EMPLOYER>\n");
-			ofxFile.write("\t\t\t\t\t<FEDIDNUMBER>" + w2.getReport().getCompanies().getCompany().getClientInformation().getTaxIdInfoClientInfo().getEinNumber() + "</FEDIDNUMBER>\n");
-			ofxFile.write("\t\t\t\t\t<NAME1>" + w2.getReport().getCompanies().getCompany().getClientInformation().getCompanyName() + "</NAME1>\n");
-			ofxFile.write("\t\t\t\t\t<ADDR1>" + w2.getReport().getCompanies().getCompany().getClientInformation().getAddressInformation().getStreet() + "</ADDR1>\n");
-			ofxFile.write("\t\t\t\t\t<CITY>" + w2.getReport().getCompanies().getCompany().getClientInformation().getAddressInformation().getLocality() + "</CITY>\n");
-			ofxFile.write("\t\t\t\t\t<STATE>" + w2.getReport().getCompanies().getCompany().getClientInformation().getAddressInformation().getRegion() + "</STATE>\n");
-			ofxFile.write("\t\t\t\t\t<POSTALCODE>" + w2.getReport().getCompanies().getCompany().getClientInformation().getAddressInformation().getPostalCode() + "</POSTALCODE>\n");
-			ofxFile.write("\t\t\t\t</EMPLOYER>\n");
-			// 3.2.10 EMPLOYEE
-			ofxFile.write("\t\t\t\t<EMPLOYEE>\n");
-			ofxFile.write("\t\t\t\t<SSN>" + w2.getSSN() + "</SSN>\n");
+			ofxFile.write("\t\t\t\t\t<SSN>" + w2.getSSN() + "</SSN>\n");
+			ofxFile.write("\t\t\t\t\t<FIRSTNAME>" + w2.getFirstName() +"</FIRSTNAME>\n");
+			ofxFile.write("\t\t\t\t\t<MIDDLENAME>" + w2.getMiddleInt() +"</MIDDLENAME>\n");
+			ofxFile.write("\t\t\t\t\t<LASTNAME>" + w2.getLastName() +"</LASTNAME>\n");
+			ofxFile.write("\t\t\t\t\t<ADDR1>" + w2.getAdr1() + "</ADDR1>\n");
+			ofxFile.write("\t\t\t\t\t<CITY>" + w2.getCity() + "</CITY>\n");
+			ofxFile.write("\t\t\t\t\t<STATE>" + w2.getState() + "</STATE>\n");
+			ofxFile.write("\t\t\t\t\t<POSTALCODE>" + w2.getZip() + "</POSTALCODE>\n");
 			ofxFile.write("\t\t\t\t</EMPLOYEE>\n");
 			//3.2.7
 //			ofxFile.write("\t\t\t\t<WAGES>" + w2.getWages() + "<WAGES/>\n");
