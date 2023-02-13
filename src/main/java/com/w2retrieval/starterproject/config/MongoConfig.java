@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import com.w2retrieval.starterproject.converter.EETaxDataConverter;
 import com.w2retrieval.starterproject.model.EETaxData;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,6 +32,7 @@ public class MongoConfig {
     {
         List<Converter<?, ?>> converterList = new ArrayList<Converter<?, ?>>();
         converterList.add(new EEFormDataConverter());
+        converterList.add(new EETaxDataConverter());
         return new MongoCustomConversions(converterList);
     }
 
