@@ -8,7 +8,7 @@ import com.w2retrieval.starterproject.model.W2;
 
 public interface W2Repository extends MongoRepository<W2, String> {
 
-    @Query("{'report.companies.company.employees.employee.basicEmployeeInfo.taxIdInfo.socialSecurityNumber': ?0}")
+    @Query("{'reportDefinition.report.companies.company.employees.employee.basicEmployeeInfo.taxIdInfo.socialSecurityNumber': ?0}")
     public W2 findBySocialSecurityNumber(String socialSecurityNumber);
 
     public long count();

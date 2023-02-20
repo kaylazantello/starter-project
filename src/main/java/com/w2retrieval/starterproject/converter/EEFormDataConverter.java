@@ -3,77 +3,102 @@ package com.w2retrieval.starterproject.converter;
 import com.w2retrieval.starterproject.model.EEFormData;
 
 import com.w2retrieval.starterproject.model.EETaxData;
+import com.w2retrieval.starterproject.model.StateInformation;
+import com.w2retrieval.starterproject.model.LocalInformation;
+import com.w2retrieval.starterproject.model.Box14;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.convert.ReadingConverter;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.bson.Document;
 import org.springframework.stereotype.Component;
 
+import javax.print.Doc;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
 @ReadingConverter
-public class EEFormDataConverter implements Converter<List<EETaxData>, EEFormData> {
+public class EEFormDataConverter implements Converter<List<Document>, EEFormData> {
+
     @Override
-    public EEFormData convert(List<EETaxData> source) {
+    public EEFormData convert(List<Document> source) {
         System.out.println("EEFormDataConverter Called\n");
-        return new EEFormData(source);
-    }
-}
 
+        // create new list to hold EETaxData objects
+        List<EETaxData> EETaxDataList = new ArrayList<>();
 
-/*
-*
-*
-*
-package com.sample.app.converter;
+        // for each Document in the source list
+        for(Document x : source) {
+            // extract the EETaxData document
+            Document doc_EETaxData = x.get("eeTaxData", Document.class);
 
-import java.time.ZoneOffset;
-import java.time.ZonedDateTime;
-import java.util.Date;
+            // instantiate a new EETaxData object
+            EETaxData obj = new EETaxData();
 
-import org.springframework.core.convert.converter.Converter;
-import org.springframework.data.convert.ReadingConverter;
-import org.springframework.stereotype.Component;
+            // set all string attributes by pulling from the EETaxData Document
+            obj.setAllocatedTips(doc_EETaxData.getString("allocatedTips"));
+            obj.setDependentCareBenefits(doc_EETaxData.getString("dependentCareBenefits"));
+            obj.setFederalIncomeTaxWithheld(doc_EETaxData.getString("federalIncomeTaxWithheld"));
+            obj.setMedicareTaxWithheld(doc_EETaxData.getString("medicareTaxWithheld"));
+            obj.setMedicareWagesAndTips(doc_EETaxData.getString("medicareWagesAndTips"));
+            obj.setMsg(doc_EETaxData.getString("msg"));
+            obj.setNonQualifiedPlans(doc_EETaxData.getString("nonQualifiedPlans"));
+            obj.setRetirementIndicator(doc_EETaxData.getString("retirementIndicator"));
+            obj.setSocialSecurityTaxWithheld(doc_EETaxData.getString("socialSecurityTaxWithheld"));
+            obj.setSocialSecurityTips(doc_EETaxData.getString("socialSecurityTips"));
+            obj.setSocialSecurityWages(doc_EETaxData.getString("socialSecurityWages"));
+            obj.setStatutoryIndicator(doc_EETaxData.getString("statutoryIndicator"));
+            obj.setThirdPartySickIndicator(doc_EETaxData.getString("thirdPartySickIndicator"));
+            obj.setW2PrintIndicator(doc_EETaxData.getString("w2PrintIndicator"));
+            obj.setWagesTipsOtherCompensation(doc_EETaxData.getString("wagesTipsOtherCompensation"));
 
-@Component
-@ReadingConverter
-public class ZonedDateTimeReadConverter implements Converter<Date, ZonedDateTime> {
+            // get the box14 array from the EETaxData Document
+            List<Document> doc_b14 = doc_EETaxData.getList("box14", Document.class);
 
- @Override
- public ZonedDateTime convert(Date date) {
-  System.out.println("Reading Converter called");
-  return date.toInstant().atZone(ZoneOffset.UTC);
- }
+            // if box14 array was found in EETaxData Document
+            if(doc_b14 != null){
+                // create a new list for Box14 objects
+                List<Box14> b14 = new ArrayList<>();
 
-}
+                // for each Document in the box14 array
+                for (Document z : doc_b14) {
+                    // create a new Box14 object by pulling the attributes from the box14 Document and add it to list
+                    b14.add(new Box14(z.getString("boxAmount"), z.getString("boxText")));
+                }
+                // set Box14 attribute for EETaxData object
+                obj.setBox14(b14);
+            }
 
-*
-*
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBObject;
-import com.baeldung.model.User;
-import org.springframework.core.convert.converter.Converter;
-import org.springframework.stereotype.Component;
+            // get the stateInformation array from the EETaxData Document
+            List<Document> stinfo = doc_EETaxData.getList("stateInformation", Document.class);
 
-@Component
-public class UserWriterConverter implements Converter<User, DBObject> {
+            // if stateInformation array was found in EETaxData Document
+            if(stinfo != null) {
+                // create a new list for StateInformation objects
+                List<StateInformation> stateInfo = new ArrayList<>();
 
-    @Override
-    public DBObject convert(final User user) {
-        final DBObject dbObject = new BasicDBObject();
-        dbObject.put("name", user.getName());
-        dbObject.put("age", user.getAge());
-        if (user.getEmailAddress() != null) {
-            final DBObject emailDbObject = new BasicDBObject();
-            emailDbObject.put("value", user.getEmailAddress().getValue());
-            dbObject.put("email", emailDbObject);
+                // for each Document in the stateInformation array
+                for(Document y : stinfo) {
+                    // create a new StateInformation object
+                    StateInformation s = new StateInformation();
+
+                    // set all string attributes by pulling from Document
+                    s.setStateAbbreviation(y.getString("stateAbbreviation"));
+                    s.setStateIdNumber(y.getString("stateIdNumber"));
+                    s.setStateIncomeTax(y.getString("stateIncomeTax"));
+                    s.setStateWagesTips(y.getString("stateWagesTips"));
+
+                    // add StateInformation object to list
+                    stateInfo.add(s);
+                }
+                // set StateInformation attribute for EETaxData object
+                obj.setStateInformation(stateInfo);
+            }
+
+            // add fully assembled EETaxData object to list
+            EETaxDataList.add(obj);
         }
-        dbObject.removeField("_class");
-        return dbObject;
+        return new EEFormData(EETaxDataList);
     }
-
 }
 
-*
-* */
+

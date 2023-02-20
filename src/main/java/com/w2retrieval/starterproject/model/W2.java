@@ -15,69 +15,94 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class W2 {
     @Id
     protected String id;
-    protected String _class;
-    protected Header header;
-    protected Report report;
-    protected ReportOptions reportOptions;
-    
+    //protected String _class;
+    //protected Header header;
+    //protected Report report;
+    //protected ReportOptions reportOptions;
+
+    protected ReportDefinition reportDefinition;
+
+    public String getFEID() {
+        return reportDefinition.report.companies.company.clientInformation.taxIdInfoClientInfo.getEinNumber();
+    }
+
+    public String getName1() {
+        return reportDefinition.report.companies.company.clientInformation.getCompanyName();
+    }
+
+    public String getAddr1() {
+        return reportDefinition.report.companies.company.clientInformation.addressInformation.getStreet();
+    }
+
+    public String getEmployerCity() {
+        return reportDefinition.report.companies.company.clientInformation.addressInformation.getLocality();
+    }
+
+    public String getEmployerState() {
+        return reportDefinition.report.companies.company.clientInformation.addressInformation.getRegion();
+    }
+
+    public String getEmployerPostal() {
+        return reportDefinition.report.companies.company.clientInformation.addressInformation.getPostalCode();
+    }
     public String getSSN() {
-        return report.companies.company.employees.employee.get(0).basicEmployeeInfo.taxIdInfo.getSocialSecurityNumber();
+        return reportDefinition.report.companies.company.employees.employee.get(0).basicEmployeeInfo.taxIdInfo.getSocialSecurityNumber();
     }
     public String getAdr1() {
-        return report.companies.company.employees.employee.get(0).basicEmployeeInfo.employeeAddressInformation.getAddress1();
+        return reportDefinition.report.companies.company.employees.employee.get(0).basicEmployeeInfo.employeeAddressInformation.getAddress1();
     }
     public String getCity() {
-        String str = report.companies.company.employees.employee.get(0).basicEmployeeInfo.employeeAddressInformation.getAddress2();
+        String str = reportDefinition.report.companies.company.employees.employee.get(0).basicEmployeeInfo.employeeAddressInformation.getAddress2();
         String delimSpace = " ";
         String[] arr1  = str.split(delimSpace);
         return arr1[0];
     }
     public String getState() {
-        String str = report.companies.company.employees.employee.get(0).basicEmployeeInfo.employeeAddressInformation.getAddress2();
+        String str = reportDefinition.report.companies.company.employees.employee.get(0).basicEmployeeInfo.employeeAddressInformation.getAddress2();
         String delimSpace = " ";
         String[] arr1  = str.split(delimSpace);
         return arr1[1];
     }
     public String getZip() {
-        String str = report.companies.company.employees.employee.get(0).basicEmployeeInfo.employeeAddressInformation.getAddress2();
+        String str = reportDefinition.report.companies.company.employees.employee.get(0).basicEmployeeInfo.employeeAddressInformation.getAddress2();
         String delimSpace = " ";
         String[] arr1  = str.split(delimSpace);
         return arr1[2];
     }
     public String getFirstName() {
-        return report.companies.company.employees.employee.get(0).basicEmployeeInfo.employeeName.getFirstName();
+        return reportDefinition.report.companies.company.employees.employee.get(0).basicEmployeeInfo.employeeName.getFirstName();
     }
     public String getLastName() {
-        return report.companies.company.employees.employee.get(0).basicEmployeeInfo.employeeName.getLastName();
+        return reportDefinition.report.companies.company.employees.employee.get(0).basicEmployeeInfo.employeeName.getLastName();
     }
     public String getMiddleInt() {
-        return report.companies.company.employees.employee.get(0).basicEmployeeInfo.employeeName.getMiddleInitial();
+        return reportDefinition.report.companies.company.employees.employee.get(0).basicEmployeeInfo.employeeName.getMiddleInitial();
     }
 
-    /*
+
     public String getWages() {
-        return report.companies.company.employees.employee.get(0).eeFormData.eeTaxData.get(0).stateInformation.get(0).localInformation.get(0).getLocalIncomeTax();
-        //eeFormData.eeTaxData
-        // stateInformation.get(0).localInformation.localWageTips()
+        return reportDefinition.report.companies.company.employees.employee.get(0).eeFormData.eeTaxData.get(0).getWagesTipsOtherCompensation();
     }
+
     public String getFedTaxWh() {
-        return report.companies.company.employees.employee.get(0).eeFormData.eeTaxData.get(0).getFederalIncomeTaxWithheld();
+        return reportDefinition.report.companies.company.employees.employee.get(0).eeFormData.eeTaxData.get(0).getFederalIncomeTaxWithheld();
     }
+
     public String getSSWages(){
-        return report.companies.company.employees.employee.get(0).eeFormData.eeTaxData.get(0).getSocialSecurityWages();
+        return reportDefinition.report.companies.company.employees.employee.get(0).eeFormData.eeTaxData.get(0).getSocialSecurityWages();
     }
     public String getSSTaxWH(){
-        return report.companies.company.employees.employee.get(0).eeFormData.eeTaxData.get(0).getSocialSecurityTaxWithheld();
+        return reportDefinition.report.companies.company.employees.employee.get(0).eeFormData.eeTaxData.get(0).getSocialSecurityTaxWithheld();
     }
     public String getMedCareWages(){
-        return report.companies.company.employees.employee.get(0).eeFormData.eeTaxData.get(0).getMedicareWagesAndTips();
+        return reportDefinition.report.companies.company.employees.employee.get(0).eeFormData.eeTaxData.get(0).getMedicareWagesAndTips();
     }
     public String getMedCareTaxWH(){
-        return report.companies.company.employees.employee.get(0).eeFormData.eeTaxData.get(0).getMedicareTaxWithheld();
+        return reportDefinition.report.companies.company.employees.employee.get(0).eeFormData.eeTaxData.get(0).getMedicareTaxWithheld();
     }
     public String getSSTips(){
-        return report.companies.company.employees.employee.get(0).eeFormData.eeTaxData.get(0).getSocialSecurityTips();
+        return reportDefinition.report.companies.company.employees.employee.get(0).eeFormData.eeTaxData.get(0).getSocialSecurityTips();
     }
-     */
+
 }
 
