@@ -68,7 +68,8 @@ public class StarterProjectApplication implements CommandLineRunner {
 		try {
 			FileWriter ofxFile = new FileWriter(w2_id + ".ofx");
 			//OFX Headers
-			ofxFile.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n" + "<?OFX OFXHEADER=\"200\" VERSION=\"202\" SECURITY=\"NONE\" OLDFILEUID=\"NONE\" NEWFILEUID=\"NONE\"?>");
+			ofxFile.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n" +
+					          "<?OFX OFXHEADER=\"200\" VERSION=\"202\" SECURITY=\"NONE\" OLDFILEUID=\"NONE\" NEWFILEUID=\"NONE\"?>");
 			ofxFile.write("<OFX>\n" +
 					"    <SIGNONMSGSRSV1>\n" +
 					"        <SONRS>\n" +
@@ -95,47 +96,29 @@ public class StarterProjectApplication implements CommandLineRunner {
 					"            </STATUS>");
 			ofxFile.write("\t\t\t<TAXW2RS>\n");
 			ofxFile.write("\t\t\t\t<TAXW2_V200>\n");
-			//ofxFile.write("\t<TAXYEAR>2023</TAXYEAR>\n");
+
+			ofxFile.write("\t\t\t\t\t<TAXYEAR>2023</TAXYEAR>\n");
+			ofxFile.write("\t\t\t\t\t<CNTRLNO> </CNTRLNO>\n");
 			// 3.2.9 EMPLOYER
-			ofxFile.write("\t\t\t\t<EMPLOYER>\n");
-			ofxFile.write("\t\t\t\t\t<FEDIDNUMBER>" + w2.getFEID() + "</FEDIDNUMBER>\n");
-			ofxFile.write("\t\t\t\t\t<NAME1>" + w2.getName1() + "</NAME1>\n");
-			ofxFile.write("\t\t\t\t\t<ADDR1>" + w2.getAddr1() + "</ADDR1>\n");
-			ofxFile.write("\t\t\t\t\t<CITY>" + w2.getEmployerCity() + "</CITY>\n");
-			ofxFile.write("\t\t\t\t\t<STATE>" + w2.getEmployerState() + "</STATE>\n");
-			ofxFile.write("\t\t\t\t\t<POSTALCODE>" + w2.getEmployerPostal() + "</POSTALCODE>\n");
-			ofxFile.write("\t\t\t\t</EMPLOYER>\n");
+			ofxFile.write("\t\t\t\t\t<EMPLOYER>\n");
+			ofxFile.write("\t\t\t\t\t\t<FEDIDNUMBER>" + w2.getFEID() + "</FEDIDNUMBER>\n");
+			ofxFile.write("\t\t\t\t\t\t<NAME1>" + w2.getName1() + "</NAME1>\n");
+			ofxFile.write("\t\t\t\t\t\t<ADDR1>" + w2.getAddr1() + "</ADDR1>\n");
+			ofxFile.write("\t\t\t\t\t\t<CITY>" + w2.getEmployerCity() + "</CITY>\n");
+			ofxFile.write("\t\t\t\t\t\t<STATE>" + w2.getEmployerState() + "</STATE>\n");
+			ofxFile.write("\t\t\t\t\t\t<POSTALCODE>" + w2.getEmployerPostal() + "</POSTALCODE>\n");
+			ofxFile.write("\t\t\t\t\t</EMPLOYER>\n");
 			// 3.2.10 EMPLOYEE
-			ofxFile.write("\t\t\t\t<EMPLOYEE>\n");
-			ofxFile.write("\t\t\t\t\t<SSN>" + w2.getSSN() + "</SSN>\n");
-			ofxFile.write("\t\t\t\t\t<FIRSTNAME>" + w2.getFirstName() +"</FIRSTNAME>\n");
-			ofxFile.write("\t\t\t\t\t<MIDDLENAME>" + w2.getMiddleInt() +"</MIDDLENAME>\n");
-			ofxFile.write("\t\t\t\t\t<LASTNAME>" + w2.getLastName() +"</LASTNAME>\n");
-			ofxFile.write("\t\t\t\t\t<ADDR1>" + w2.getAdr1() + "</ADDR1>\n");
-			ofxFile.write("\t\t\t\t\t<CITY>" + w2.getCity() + "</CITY>\n");
-			ofxFile.write("\t\t\t\t\t<STATE>" + w2.getState() + "</STATE>\n");
-			ofxFile.write("\t\t\t\t\t<POSTALCODE>" + w2.getZip() + "</POSTALCODE>\n");
-			ofxFile.write("\t\t\t\t</EMPLOYEE>\n");
-			ofxFile.write("\t\t\t\t<SSN>" + w2.getSSN() + "</SSN>\n");
-			ofxFile.write("\t\t\t\t</EMPLOYEE>\n");
-			ofxFile.write("\t\t\t\t<ORIGINALW2>");
-			ofxFile.write("\t<TAXYEAR>2023</TAXYEAR>\n");
-
-			//3.2.7
-			System.out.println("Employees = " + w2.getReportDefinition().getReport().getCompanies().getCompany().getEmployees());
-			System.out.println("Employees belongs to: " + (w2.getReportDefinition().getReport().getCompanies().getCompany().getEmployees()).getClass());
-			System.out.println("Employee = " + w2.getReportDefinition().getReport().getCompanies().getCompany().getEmployees().getEmployee());
-			System.out.println("Employee belongs to: " + (w2.getReportDefinition().getReport().getCompanies().getCompany().getEmployees().getEmployee()).getClass());
-			System.out.println("-----------------------------------------------------------------------------------------");
-			System.out.println("EEFormData = " + w2.getReportDefinition().getReport().getCompanies().getCompany().getEmployees().getEmployee().get(0).getEeFormData());
-			System.out.println("EEFormData belongs to: " + (w2.getReportDefinition().getReport().getCompanies().getCompany().getEmployees().getEmployee().get(0).getEeFormData()).getClass());
-			System.out.println("EETaxData = " + w2.getReportDefinition().getReport().getCompanies().getCompany().getEmployees().getEmployee().get(0).getEeFormData().getEeTaxData());
-			System.out.println("EETaxData belongs to: " + (w2.getReportDefinition().getReport().getCompanies().getCompany().getEmployees().getEmployee().get(0).getEeFormData().getEeTaxData()).getClass());
-
-			System.out.println("EETaxData[0] = " + w2.getReportDefinition().getReport().getCompanies().getCompany().getEmployees().getEmployee().get(0).getEeFormData().getEeTaxData().get(0));
-			System.out.println("EETaxData[0] belongs to: " + w2.getReportDefinition().getReport().getCompanies().getCompany().getEmployees().getEmployee().get(0).getEeFormData().getEeTaxData().get(0).getClass());
-
-			//Document doc = w2.getReport().getCompanies().getCompany().getEmployees().getEmployee().get(0).getEeFormData().getEeTaxData().get(0);
+			ofxFile.write("\t\t\t\t\t<EMPLOYEE>\n");
+			ofxFile.write("\t\t\t\t\t\t<SSN>" + w2.getSSN() + "</SSN>\n");
+			ofxFile.write("\t\t\t\t\t\t<FIRSTNAME>" + w2.getFirstName() +"</FIRSTNAME>\n");
+			ofxFile.write("\t\t\t\t\t\t<MIDDLENAME>" + w2.getMiddleInt() +"</MIDDLENAME>\n");
+			ofxFile.write("\t\t\t\t\t\t<LASTNAME>" + w2.getLastName() +"</LASTNAME>\n");
+			ofxFile.write("\t\t\t\t\t\t<ADDR1>" + w2.getAdr1() + "</ADDR1>\n");
+			ofxFile.write("\t\t\t\t\t\t<CITY>" + w2.getCity() + "</CITY>\n");
+			ofxFile.write("\t\t\t\t\t\t<STATE>" + w2.getState() + "</STATE>\n");
+			ofxFile.write("\t\t\t\t\t\t<POSTALCODE>" + w2.getZip() + "</POSTALCODE>\n");
+			ofxFile.write("\t\t\t\t\t</EMPLOYEE>\n");
 
 			ofxFile.write("\t\t\t\t<WAGES>" + w2.getWages() + "<WAGES/>\n");
 			ofxFile.write("\t\t\t\t<FEDTAXWH>" + w2.getFedTaxWh() + "</FEDTAXWH>\n");
@@ -154,7 +137,7 @@ public class StarterProjectApplication implements CommandLineRunner {
 			ofxFile.write("\t</TAXW2MSGSRSV1>\n");
 			ofxFile.write("</OFX>");
 			ofxFile.close();
-			System.out.println("Successfully wrote to the file.");
+			//System.out.println("Successfully wrote to the file.");
 		} catch (IOException e) {
 			System.out.println("An error occurred.");
 			e.printStackTrace();
