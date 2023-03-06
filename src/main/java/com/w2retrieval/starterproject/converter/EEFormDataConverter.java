@@ -81,6 +81,34 @@ public class EEFormDataConverter implements Converter<List<Document>, EEFormData
                     // create a new StateInformation object
                     StateInformation s = new StateInformation();
 
+                    // get the localInformation array from the stateInformation Document
+                    List<Document> locinfo = doc_EETaxData.getList("localInformation", Document.class);
+
+                    // create a new list for LocalInformation objects
+                    List<LocalInformation> localInfo = new ArrayList<>();
+
+                    // if localInformation array was found in Document
+                    if(locinfo != null) {
+
+                        // for each Document in the localInformation array
+                        for(Document l : locinfo) {
+                            // create a new LocalInformation object
+                            LocalInformation loc = new LocalInformation();
+
+                            // set all string attributes by pulling from Document
+                            loc.setLocalIncomeTax(l.getString("localIncomeTax"));
+                            loc.setLocalName(l.getString("localName"));
+                            loc.setLocalWageTips(l.getString("localWageTips"));
+                            //loc.setPennsylvaniaLiveSchoolDistrictCode(l.getString("pennsylvaniaLiveSchoolDistrictCode"));
+                            //loc.setPennsylvaniaSchoolDistrictCode(l.getString("pennsylvaniaSchoolDistrictCode"));
+
+                            // add LocalInformation object to list
+                            localInfo.add(loc);
+                        }
+                    }
+                    // set localInformation for StateInformation object
+                    s.setLocalInformation(localInfo);
+
                     // set all string attributes by pulling from Document
                     s.setStateAbbreviation(y.getString("stateAbbreviation"));
                     s.setStateIdNumber(y.getString("stateIdNumber"));

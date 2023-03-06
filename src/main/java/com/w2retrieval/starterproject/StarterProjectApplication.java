@@ -12,11 +12,20 @@ import com.w2retrieval.starterproject.repository.W2Repository;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.bson.Document;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
 import java.io.File;  // Import the File class
 import java.io.IOException;  // Import the IOException class to handle errors
 import java.io.FileWriter;   // Import the FileWriter class
 
+import java.nio.file.Files;
+
+import java.io.FileInputStream;
+
 @SpringBootApplication
+//@RestController
 public class StarterProjectApplication implements CommandLineRunner {
 
 	private W2Repository w2repository;
@@ -29,6 +38,11 @@ public class StarterProjectApplication implements CommandLineRunner {
 	public static void main(String[] args) {
 		SpringApplication.run(StarterProjectApplication.class, args);
 	}
+
+//	@GetMapping("/ofxtranslation")
+//	public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
+//		return String.format("Hello %s!", name);
+//	}
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -150,7 +164,13 @@ public class StarterProjectApplication implements CommandLineRunner {
 			ofxFile.write("\t</TAXW2MSGSRSV1>\n");
 			ofxFile.write("</OFX>");
 			ofxFile.close();
-			//System.out.println("Successfully wrote to the file.");
+			System.out.println("Successfully wrote to the file.");
+			FileInputStream ofx = new FileInputStream(w2_id + ".ofx");
+			int ofxFileLength = (int) new File(w2_id + ".ofx").length();
+			byte Bytes[] = new byte[ofxFileLength];
+			System.out.println(ofx.read(Bytes));
+			String finalOFX = new String(Bytes);
+			System.out.println(finalOFX);
 		} catch (IOException e) {
 			System.out.println("An error occurred.");
 			e.printStackTrace();
