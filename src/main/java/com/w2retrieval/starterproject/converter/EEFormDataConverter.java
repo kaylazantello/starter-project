@@ -10,8 +10,6 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.convert.ReadingConverter;
 import org.bson.Document;
 import org.springframework.stereotype.Component;
-
-import javax.print.Doc;
 import java.util.ArrayList;
 import java.util.List;
 
