@@ -24,6 +24,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 
 @Configuration
+//@EnableMongoRepositories
 //@EnableMongoRepositories(basePackages = "com.baeldung.repository")
 //public class MongoConfig extends AbstractMongoClientConfiguration {
 public class MongoConfig {

@@ -83,7 +83,7 @@ public class W2 {
             return "";
         }
         else {
-            String str1 = "\t\t\t\t\t\t<MIDDLENAME11>" + str + "</MIDDLENAME>\n";
+            String str1 = "<MIDDLENAME>" + str + "</MIDDLENAME>\n";
             return str1;
         }
     }
@@ -115,7 +115,7 @@ public class W2 {
             return "";
         }
         else {
-            return "\t\t\t\t\t<SSTIPS>" + str + "</SSTIPS>\n";
+            return "<SSTIPS>" + str + "</SSTIPS>\n";
         }
     }
 
@@ -125,7 +125,7 @@ public class W2 {
             return "";
         }
         else {
-            return "\t\t\t\t\t<ALLOCATEDTIPS>"+ str +"</ALLOCATEDTIPS>\n";
+            return "<ALLOCATEDTIPS>"+ str +"</ALLOCATEDTIPS>\n";
         }
     }
 
@@ -135,7 +135,7 @@ public class W2 {
 //            return "";
 //        }
 //        else {
-//            return "\t\t\t\t\t<ADVANCEDEIC>"+ str +"</ADVANCEDEIC>\n";
+//            return "<ADVANCEDEIC>"+ str +"</ADVANCEDEIC>\n";
 //        }
 //    }
 
@@ -145,7 +145,7 @@ public class W2 {
             return "";
         }
         else {
-            return "\t\t\t\t\t<DEPCAREBENEFIT>"+ str +"</DEPCAREBENEFIT>\n";
+            return "<DEPCAREBENEFIT>"+ str +"</DEPCAREBENEFIT>\n";
         }
     }
 
@@ -155,7 +155,7 @@ public class W2 {
             return "";
         }
         else {
-            return "\t\t\t\t\t<NONQUALPLAN>"+ str +"</NONQUALPLAN>\n";
+            return "<NONQUALPLAN>"+ str +"</NONQUALPLAN>\n";
         }
     }
 
@@ -165,7 +165,7 @@ public class W2 {
             return "";
         }
         else {
-            return "\t\t\t\t\t<STATUTORY>"+ str +"</STATUTORY>\n";
+            return "<STATUTORY>"+ str +"</STATUTORY>\n";
         }
     }
 
@@ -175,7 +175,7 @@ public class W2 {
             return "";
         }
         else {
-            return "\t\t\t\t\t<RETIREMENTPLAN>"+ str +"</RETIREMENTPLAN>\n";
+            return "<RETIREMENTPLAN>"+ str +"</RETIREMENTPLAN>\n";
         }
     }
 
@@ -185,7 +185,7 @@ public class W2 {
             return "";
         }
         else {
-            return "\t\t\t\t\t<THIRDPARTYSICKPAY>"+ str +"</THIRDPARTYSICKPAY>\n";
+            return "<THIRDPARTYSICKPAY>"+ str +"</THIRDPARTYSICKPAY>\n";
         }
     }
 
@@ -206,8 +206,8 @@ public class W2 {
     }
 
     public String getLocalInfo(){
-        String str = "\t\t\t\t\t<LOCALINFO>\n";
-        String str5 = "\t\t\t\t\t</LOCALINFO>\n";
+        String str = "<LOCALINFO>\n";
+        String str5 = "</LOCALINFO>\n";
         String str1 = reportDefinition.report.companies.company.employees.employee.get(0).eeFormData.eeTaxData.get(0).stateInformation.get(0).localInformation.get(0).getLocalName();
         String str2 = reportDefinition.report.companies.company.employees.employee.get(0).eeFormData.eeTaxData.get(0).stateInformation.get(0).localInformation.get(0).getLocalWageTips();
         String str3 = reportDefinition.report.companies.company.employees.employee.get(0).eeFormData.eeTaxData.get(0).stateInformation.get(0).localInformation.get(0).getLocalIncomeTax();
@@ -219,19 +219,19 @@ public class W2 {
                         return "";
                     }
                     else{
-                        str4 = "\t\t\t\t\t\t<LOCALITYSTATE>" + str4 + "</LOCALITYSTATE>\n";
+                        str4 = "<LOCALITYSTATE>" + str4 + "</LOCALITYSTATE>\n";
                     }
                 }
                 else{
-                    str3 = "\t\t\t\t\t\t<LOCALTAXWH>" + str3 + "</LOCALTAXWH>\n";
+                    str3 = "<LOCALTAXWH>" + str3 + "</LOCALTAXWH>\n";
                 }
             }
             else{
-                str2 = "\t\t\t\t\t\t<LOCALWAGES>" + str2 + "</LOCALWAGES>\n";
+                str2 = "<LOCALWAGES>" + str2 + "</LOCALWAGES>\n";
             }
         }
         else{
-            str1 = "\t\t\t\t\t\t<LOCALITY>" + str1 + "</LOCALITY>\n";
+            str1 = "<LOCALITY>" + str1 + "</LOCALITY>\n";
         }
         return str + str1 + str2 + str3 + str4 + str5;
     }

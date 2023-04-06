@@ -1,7 +1,9 @@
 package com.w2retrieval.starterproject.converter;
-import com.w2retrieval.starterproject.model.*;
+//import com.w2retrieval.starterproject.model.*;
 
+import com.w2retrieval.starterproject.model.Box14;
 import com.w2retrieval.starterproject.model.EETaxData;
+import com.w2retrieval.starterproject.model.StateInformation;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.convert.ReadingConverter;
 import org.bson.Document;

@@ -108,38 +108,38 @@ public class StarterProjectApplication implements CommandLineRunner {
 					"                <SEVERITY>INFO</SEVERITY>\n" +
 					"                <MESSAGE>SUCCESS</MESSAGE>\n" +
 					"            </STATUS>");
-			ofxFile.write("\t\t\t<TAXW2RS>\n");
-			ofxFile.write("\t\t\t\t<TAXW2_V200>\n");
+			ofxFile.write("<TAXW2RS>\n");
+			ofxFile.write("<TAXW2_V200>\n");
 
-			ofxFile.write("\t\t\t\t\t<TAXYEAR>2023</TAXYEAR>\n");
-			ofxFile.write("\t\t\t\t\t<CNTRLNO> </CNTRLNO>\n");
+			ofxFile.write("<TAXYEAR>2023</TAXYEAR>\n");
+			ofxFile.write("<CNTRLNO> </CNTRLNO>\n");
 			// 3.2.9 EMPLOYER
-			ofxFile.write("\t\t\t\t\t<EMPLOYER>\n");
-			ofxFile.write("\t\t\t\t\t\t<FEDIDNUMBER>" + w2.getFEID() + "</FEDIDNUMBER>\n");
-			ofxFile.write("\t\t\t\t\t\t<NAME1>" + w2.getName1() + "</NAME1>\n");
-			ofxFile.write("\t\t\t\t\t\t<ADDR1>" + w2.getAddr1() + "</ADDR1>\n");
-			ofxFile.write("\t\t\t\t\t\t<CITY>" + w2.getEmployerCity() + "</CITY>\n");
-			ofxFile.write("\t\t\t\t\t\t<STATE>" + w2.getEmployerState() + "</STATE>\n");
-			ofxFile.write("\t\t\t\t\t\t<POSTALCODE>" + w2.getEmployerPostal() + "</POSTALCODE>\n");
-			ofxFile.write("\t\t\t\t\t</EMPLOYER>\n");
+			ofxFile.write("<EMPLOYER>\n");
+			ofxFile.write("<FEDIDNUMBER>" + w2.getFEID() + "</FEDIDNUMBER>\n");
+			ofxFile.write("<NAME1>" + w2.getName1() + "</NAME1>\n");
+			ofxFile.write("<ADDR1>" + w2.getAddr1() + "</ADDR1>\n");
+			ofxFile.write("<CITY>" + w2.getEmployerCity() + "</CITY>\n");
+			ofxFile.write("<STATE>" + w2.getEmployerState() + "</STATE>\n");
+			ofxFile.write("<POSTALCODE>" + w2.getEmployerPostal() + "</POSTALCODE>\n");
+			ofxFile.write("</EMPLOYER>\n");
 			// 3.2.10 EMPLOYEE
-			ofxFile.write("\t\t\t\t\t<EMPLOYEE>\n");
-			ofxFile.write("\t\t\t\t\t\t<SSN>" + w2.getSSN() + "</SSN>\n");
-			ofxFile.write("\t\t\t\t\t\t<FIRSTNAME>" + w2.getFirstName() +"</FIRSTNAME>\n");
+			ofxFile.write("<EMPLOYEE>\n");
+			ofxFile.write("<SSN>" + w2.getSSN() + "</SSN>\n");
+			ofxFile.write("<FIRSTNAME>" + w2.getFirstName() +"</FIRSTNAME>\n");
 			ofxFile.write(w2.getMiddleInt());
-			ofxFile.write("\t\t\t\t\t\t<LASTNAME>" + w2.getLastName() +"</LASTNAME>\n");
-			ofxFile.write("\t\t\t\t\t\t<ADDR1>" + w2.getAdr1() + "</ADDR1>\n");
-			ofxFile.write("\t\t\t\t\t\t<CITY>" + w2.getCity() + "</CITY>\n");
-			ofxFile.write("\t\t\t\t\t\t<STATE>" + w2.getState() + "</STATE>\n");
-			ofxFile.write("\t\t\t\t\t\t<POSTALCODE>" + w2.getZip() + "</POSTALCODE>\n");
-			ofxFile.write("\t\t\t\t\t</EMPLOYEE>\n");
+			ofxFile.write("<LASTNAME>" + w2.getLastName() +"</LASTNAME>\n");
+			ofxFile.write("<ADDR1>" + w2.getAdr1() + "</ADDR1>\n");
+			ofxFile.write("<CITY>" + w2.getCity() + "</CITY>\n");
+			ofxFile.write("<STATE>" + w2.getState() + "</STATE>\n");
+			ofxFile.write("<POSTALCODE>" + w2.getZip() + "</POSTALCODE>\n");
+			ofxFile.write("</EMPLOYEE>\n");
 
-			ofxFile.write("\t\t\t\t\t<WAGES>" + w2.getWages() + "<WAGES/>\n");
-			ofxFile.write("\t\t\t\t\t<FEDTAXWH>" + w2.getFedTaxWh() + "</FEDTAXWH>\n");
-			ofxFile.write("\t\t\t\t\t<SSWAGES>" + w2.getSSWages() + "</SSWAGES>\n");
-			ofxFile.write("\t\t\t\t\t<SSTAXWH>" + w2.getSSTaxWH() + "</SSTAXWH>\n");
-			ofxFile.write("\t\t\t\t\t<MEDICAREWAGES>" + w2.getMedCareWages() + "</MEDICAREWAGES>\n");
-			ofxFile.write("\t\t\t\t\t<MEDICARETAXWH>" + w2.getMedCareTaxWH() + "</MEDICARETAXWH>\n");
+			ofxFile.write("<WAGES>" + w2.getWages() + "<WAGES/>\n");
+			ofxFile.write("<FEDTAXWH>" + w2.getFedTaxWh() + "</FEDTAXWH>\n");
+			ofxFile.write("<SSWAGES>" + w2.getSSWages() + "</SSWAGES>\n");
+			ofxFile.write("<SSTAXWH>" + w2.getSSTaxWH() + "</SSTAXWH>\n");
+			ofxFile.write("<MEDICAREWAGES>" + w2.getMedCareWages() + "</MEDICAREWAGES>\n");
+			ofxFile.write("<MEDICARETAXWH>" + w2.getMedCareTaxWH() + "</MEDICARETAXWH>\n");
 			ofxFile.write(w2.getSSTips());
 			ofxFile.write(w2.getAllocatedTips());
 			ofxFile.write(w2.getDepCareBene());
@@ -149,19 +149,19 @@ public class StarterProjectApplication implements CommandLineRunner {
 			ofxFile.write(w2.getRetirementPlan());
 			ofxFile.write(w2.getTPSickPay());
 
-			ofxFile.write("\t\t\t\t\t<STATEINFO>\n");
-			ofxFile.write("\t\t\t\t\t\t<STATECODE>"+ w2.getStateCode() +"</STATECODE>\n");
-			ofxFile.write("\t\t\t\t\t\t<EMPLOYERSTID>"+ w2.getESID() +"</EMPLOYERSTID>\n");
-			ofxFile.write("\t\t\t\t\t\t<STATEWAGES>"+ w2.getStateWages() +"</STATEWAGES>\n");
-			ofxFile.write("\t\t\t\t\t\t<STATETAXWH>"+ w2.getStateTaxWH() +"</STATETAXWH>\n");
-			ofxFile.write("\t\t\t\t\t</STATEINFO>\n");
+			ofxFile.write("<STATEINFO>\n");
+			ofxFile.write("<STATECODE>"+ w2.getStateCode() +"</STATECODE>\n");
+			ofxFile.write("<EMPLOYERSTID>"+ w2.getESID() +"</EMPLOYERSTID>\n");
+			ofxFile.write("<STATEWAGES>"+ w2.getStateWages() +"</STATEWAGES>\n");
+			ofxFile.write("<STATETAXWH>"+ w2.getStateTaxWH() +"</STATETAXWH>\n");
+			ofxFile.write("</STATEINFO>\n");
 
 			//ofxFile.write(w2.getLocalInfo());
 
-			ofxFile.write("\t\t\t\t</TAXW2_V200>\n");
-			ofxFile.write("\t\t\t</TAXW2RS>\n");
-			ofxFile.write("\t\t</TAXW2TRNRS>\n");
-			ofxFile.write("\t</TAXW2MSGSRSV1>\n");
+			ofxFile.write("</TAXW2_V200>\n");
+			ofxFile.write("</TAXW2RS>\n");
+			ofxFile.write("</TAXW2TRNRS>\n");
+			ofxFile.write("</TAXW2MSGSRSV1>\n");
 			ofxFile.write("</OFX>");
 			ofxFile.close();
 			System.out.println("Successfully wrote to the file.");
