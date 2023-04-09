@@ -7,6 +7,8 @@ import java.io.IOException;
 
 import com.w2retrieval.starterproject.model.W2;
 import com.w2retrieval.starterproject.repository.W2Repository;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,14 +17,26 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
     private W2Repository w2repository;
 
+    private static Logger logger = LogManager.getLogger("FILE_APPENDER");
+
     public Controller(W2Repository w2repository) {
         this.w2repository = w2repository;
     }
     @GetMapping("/ofxtranslation/{ssn}")
     public String translate(@PathVariable("ssn") String ssn) {
+
         W2 w2 = w2repository.findBySocialSecurityNumber(ssn);
         String w2_id = w2.getId();
         String finalOFX = "";
+
+        //System.setProperty("log4j.configurationFile","C:\\Users\\kkzan\\OneDrive\\school22-23\\capstone\\starter-project\\src\\main\\resources\\log4j2.xml");
+        //System.setProperty("log4j.configurationFile", "src/main/resources/log4j2.xml");
+
+        logger.warn("warning message");
+        logger.debug("Debugging log");
+        logger.error("This is an error message");
+        logger.info("this is info");
+
 
         try {
             // create file
